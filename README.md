@@ -1,55 +1,13 @@
-# Filament Translations Manager
+# Filament Excel Export
 
-Translations With DB & UI
+Excel Export for Resources
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require 3x1io/filament-translations
-```
-
-Run migration:
-
-```bash
-php artisan vendor:publish --tag="filament-translations"
-php artisan migrate
-```
-
-In `config/app.php` (Laravel) or `bootstrap/app.php` (Lumen) you should replace Laravel's translation service provider
-
-```php
-Illuminate\Translation\TranslationServiceProvider::class,
-```
-
-by the one included in this package:
-
-```php
-Spatie\TranslationLoader\TranslationServiceProvider::class,
-```
-
-## Add Language Middleware
-
-go to app/Http/Kernal.php and add new middleware to $middlewareGroups
-
-```php
-    'web' => [
-        //...
-        \io3x1\FilamentTranslations\Http\Middleware\LanguageMiddleware::class,
-    ],
-```
-
-go to config/filament.php and add middleware to middleware auth array
-
-```php
-    'middleware' => [
-        'auth' => [
-            //...
-            \io3x1\FilamentTranslations\Http\Middleware\LanguageMiddleware::class
-        ],
-        //...
-    ];
+composer require 3x1io/filament-excel
 ```
 
 and now clear cache
@@ -58,13 +16,23 @@ and now clear cache
 php artisan optimize:clear
 ```
 
+## Usage
+
+it's very easy to generate export just use this command
+
+```bash
+php artisan filament:export UserResource User
+```
+
+where `UserResource` is a Resource name and `User` is a Model
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Credits
 
--   [3x1](https://github.com/3x1io)
+- [3x1](https://github.com/3x1io)
 
 ## License
 
