@@ -50,17 +50,21 @@ class ExcelGenerator extends Command
         if (File::exists($resourcesPath)) {
             //Check if Model Exists
             if (File::exists($modelPath)) {
+                $pluralModelName = Str::plural($modelName);
+
                 //Generate Export
-                Artisan::call('make:export ' . $modelName . 'sExport --model=' . $modelName);
+                Artisan::call('make:export ' . $pluralModelName . 'Export --model=' . $modelName);
                 $this->info('The Export Class Has Generated');
 
                 //Add Action To List Page For Import & Export
                 $getFileContent = view('filament-excel-templates::actions', [
                     "resource" => $resourceName,
-                    "model" => $modelName
+                    "model" => $modelName,
+                    "pluralModelName" =>$pluralModelName,
                 ]);
 
-                $listResourcePath = app_path('Filament/Resources/' . $resourceName . '/Pages/List' . Str::of($modelName)->plural() . '.php');
+
+                $listResourcePath = app_path('Filament/Resources/' . $resourceName . '/Pages/List' . $pluralModelName . '.php');
                 if (File::exists($listResourcePath)) {
                     File::put($listResourcePath, $getFileContent);
 
