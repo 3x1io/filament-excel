@@ -60,7 +60,7 @@ class ExcelGenerator extends Command
                     "model" => $modelName
                 ]);
 
-                $listResourcePath = app_path('Filament/Resources/' . $resourceName . '/Pages/List' . $modelName . 's.php');
+                $listResourcePath = app_path('Filament/Resources/' . $resourceName . '/Pages/List' . Str::of($modelName)->plural() . '.php');
                 if (File::exists($listResourcePath)) {
                     File::put($listResourcePath, $getFileContent);
 
