@@ -1,3 +1,5 @@
+![Screenshot of Login](./art/screenshot.png)
+
 # Filament Excel Export
 
 Excel Export for Resources
@@ -32,7 +34,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Credits
 
-- [3x1](https://github.com/3x1io)
+- [Fady Mondy](https://github.com/3x1io)
 
 ## License
 
